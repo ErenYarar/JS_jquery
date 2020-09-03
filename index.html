@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Javascript</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+    <style>
+        .header {
+            font-family: sans-serif;
+            font-size: 18;
+            background-color: #333333;
+            padding: 10px;
+            margin:10px;
+        }
+        .container {
+            font-size: 30px;
+        }
+
+    </style>
+  </head>
+
+  <body>
+    
+    <div class="header">
+        <h1 style="text-align: center;" class="text-white">Ana Sayfa</h1>
+
+    </div>
+    <hr>
+    <div class="container">
+    <button class="btn btn-dark text-white" onclick="document.getElementById('dene').innerHTML = Date()">Tarihi Görüntüle</button>
+    <p id = "dene"></p>
+      
+    <button class="btn btn-danger text-white" onclick="document.getElementById('bulb').src='pic_bulboff.gif'">Söndür</button>
+    <img src="pic_bulboff.gif" id="bulb">
+    <button class="btn btn-primary text-white" onclick="document.getElementById('bulb').src='pic_bulbon.gif'">Yak</button>
+    <hr>
+    <button class="btn btn-dark text-white" onclick="window.print()">WindowPrint</button>
+    <br><br>
+    
+    <button class="btn btn-info btn-lg text-white" onclick="document.getElementById('ad').innerHTML=isim">Tıkla</button>
+    <p id="ad"></p>
+    <br><br>
+      <p onmouseover="this.style.color='red'" onmouseout="this.style.color='black'">yazı yazıyorum</p>
+    <hr>
+      <script>
+        function topla(x,y){
+          var toplam = x+y;
+          return toplam;
+        }
+        function fark(x,y){
+          var farkım = x-y;
+          return farkım;
+        }
+        function carp(x,y){
+          var carpım = x*y;
+          return carpım;
+        }
+        function böl(x,y){
+          var bölüm = x/y;
+          return bölüm;
+        }
+      </script>
+
+      <h1>1. Soru</h1>
+      <p>10 + 10 kaçtır?</p>
+      <button class="btn btn-info btn-lg text-white" onclick="document.getElementById('image').innerHTML=topla(10,10)">Sonucu Görüntüle</button>
+      <p id="image"></p>
+      <hr>
+      <h1>2. Soru</h1>
+      <p>20 - 10 kaçtır?</p>
+      <button class="btn btn-info btn-lg text-white" onclick="document.getElementById('image2').innerHTML=fark(20,10)">Sonucu Görüntüle</button>
+      <p id="image2"></p>
+      <hr>
+      <h1>3. Soru</h1>
+      <p>20 * 20 kaçtır?</p>
+      <button class="btn btn-info btn-lg text-white" onclick="document.getElementById('image3').innerHTML=carp(20,20)">Sonucu Görüntüle</button>
+      <p id="image3"></p>
+      <hr>
+      <h1>4. Soru</h1>
+      <p>50 / 10 kaçtır?</p>
+      <button class="btn btn-info btn-lg text-white" onclick="document.getElementById('image4').innerHTML=böl(50,10)">Sonucu Görüntüle</button>
+      <p id="image4"></p>
+      <hr><hr><hr>
+      <br>
+      <form action="gonder.php" method="POST" name="form" onsubmit="return deneme()">
+        <input type="text" name="ftext" value="ismini gir">
+        <button class="btn btn-info btn-lg text-white" type="submit">Giriş</button>
+      </form>
+      <br><br>
+      <p id="test">eren yarar</p>
+      
+      
+      <button class="btn btn-dark btn-lg text-white">Animasyona Tıkla</button>
+      <br><br>
+      <div style="background:#98bf21;height:100px;width:200px;position:absolute;">Eren Yarar</div>
+      <br>
+      <br>
+      <p id="p1">Eren yarar javascript öğreniyor.</p>
+
+
+      <br><br><br>
+
+
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+    $(document).ready(function(){
+      $("button").click(function(){
+        var div = $("div");  
+        div.animate({left: '100px'}, "slow");
+        div.animate({fontSize: '3em'}, "slow");
+      });
+    });
+
+    $(document).ready(function(){
+      $("#p1").mouseenter(function(){
+        $(this).css("color","red").slideUp(2000);
+      });
+      $("#p1").mouseout(function(){
+        $(this).css("color","black").slideDown(2000);
+      });
+    });
+
+
+    $(document).ready(function(){
+      $("#test").on({
+        mouseenter: function(){
+          $(this).css("background-color","yellow");
+        },
+        mouseleave: function(){
+          $(this).css("background-color","red");
+        },
+        click: function(){
+          $(this).css("background-color","green");
+        }
+      });                   
+    });
+      
+
+      var isim = "Eren";
+      function deneme(){
+        var deger = document.forms['form']['ftext'].value;
+
+        if(deger == "")
+        {
+          alert("isim girilmedi");
+          return false;
+        }
+        return true;
+      }
+      
+
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

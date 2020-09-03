@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <style>
+        #başlık, #body1 {
+            text-align: center;
+            color:white;
+            background-color: #333333;
+            padding: 5px;
+            border: 2px solid black;
+        }
+        #body1 {          
+            padding: 50px;
+            display: none;
+        }
+        .blue{
+            color: blue;
+        }
+        .import{
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: xx-large;
+        }
+        .header{
+            text-align: center;
+        }
+
+    </style>
+  </head>
+  <body>
+    <div class="header">
+        <h1>Ana Sayfa</h1>
+    </div>
+
+
+    <div class="container pt-3">
+        <button id="btn1">show text</button>
+        <button id="btn2">show html</button>
+        <p id="test">bu bir <b>paragrafdır</b></p>
+        <hr>
+        <input type="text" id="test1">
+        <button id="btn3">Giriş</button>
+        <hr>
+        <a href="https://www.google.com.tr/" id="google">Google</a>
+        <button id="btn4">Google linki</button>
+        <hr>
+        <p id="test2">Yazı</p>
+        <button onclick="appendText()">Insert append</button>
+        <hr>
+        <img src="pic_bulboff.gif" alt="jquery">
+        <button onclick="afterText()">Insert after</button>
+        <hr>
+        <button id="btn5">Css ekle</button>
+        <button id="btn6">Css çıkart</button>
+        <button id="btn7" class="btn btn-primary btn-lg text-white">Css ekle - çıkart</button>
+        <hr>
+        <p id="test3" style="background-color: red;">1. yazı</p>
+        <p id="test4" style="background-color: yellow;">2. yazı</p>
+        <p id="test5" style="background-color: orange;">3. yazı</p>
+        <button id="btn8" class="btn btn-info text-white">Renk info</button>
+        <button id="btn9" class="btn btn-dark text-white">Renk değiştir</button>
+        <button id="btn10" class="btn btn-primary text-white">Renk değiş ve fontSize</button>
+        <hr>
+        <p id="test6">yazım değişicek</p>
+        <button id="btn11" class="btn btn-info text-white">Tıkla</button>
+        <hr>
+    </div>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btn1").click(function(){
+                alert("Text: " + $("#test").text());
+            });
+            $("#btn2").click(function(){
+                alert("HTML: " + $("#test").html());
+            });
+            $("#btn3").click(function(){
+                alert("İsim: " + $("#test1").val());
+            });
+            $("#btn4").click(function(){
+                alert($("#google").attr("href"));
+            });
+            $("#btn5").click(function(){
+                $("h3,p").addClass("blue");
+                $("div").addClass("import");
+            });
+            $("#btn6").click(function(){
+                $("h3,p").removeClass("blue");
+                $("div").removeClass("import");
+            });
+            $("#btn7").click(function(){
+                $("h3,p").toggleClass("blue");
+                $("div").toggleClass("import");
+            });
+            $("#btn8").click(function(){
+                alert("1. yazının renk infosu: " + $("#test3").css("background-color"));
+            });
+            $("#btn9").click(function(){
+                $("#test4").css("background-color","pink");
+            });
+            $("#btn10").click(function(){
+                $("#test5").css({"background-color":"blue","fontSize":"30px"});
+            });
+            $("#btn11").click(function(){
+                $("#test6").load("demo_test.txt");
+            });
+        });
+        function appendText(){
+            var txt1 = ("<b>I</b>");
+            var txt2 = $("<i></i>").text("love");
+            var txt3 = document.createElement("b");
+            txt3.innerHTML = "Jquery";
+            $("#test2").append(txt1,txt2,txt3);
+        }
+        function afterText(){
+            var txt1 = ("<b>I</b>");
+            var txt2 = $("<i></i>").text("love");
+            var txt3 = document.createElement("b");
+            txt3.innerHTML = "Jquery";
+            $("img").after(txt1,txt2,txt3);
+        }
+
+    </script> 
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
